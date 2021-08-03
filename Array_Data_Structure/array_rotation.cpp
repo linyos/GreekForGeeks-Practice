@@ -12,7 +12,7 @@ Input arr[] = [1, 2, 3, 4, 5, 6, 7], d = 2, n =7
  */
 
 
-// Method1  (Using temp array) 
+//   Method1  (Using temp array) 
 void leftRotatebyOne(int arr[]  ,int size) {
 
 	int tmp = arr[0];
