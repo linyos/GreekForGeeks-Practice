@@ -2,41 +2,6 @@
 #include <stdio.h>
 #include <string>
 using namespace std;
-
-
-//struct node
-//{
-//	int data;
-//	struct  node *prev;
-//	struct node * next;
-//};
-//struct node * head;
-//void insertbeginning(int item) {
-//	struct node * ptr = (struct node *) malloc(sizeof(node));
-//	if (ptr==NULL){
-//		cout << "Overflow. \n";
-//	}
-//	else
-//	{
-//		if (head==NULL)
-//		{
-//			ptr->next = NULL;
-//			ptr->prev = NULL;
-//			ptr->data = item;
-//			head = ptr;
-//		}
-//		else
-//		{
-//			
-//			ptr->data = item;
-//			ptr->prev = NULL;
-//			ptr->next = head;
-//			head = ptr;
-//		}
-//	}
-//}
-
-
 class  Node
 {
 public:
