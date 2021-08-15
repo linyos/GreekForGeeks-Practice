@@ -71,6 +71,106 @@ void Push_back(Node ** head, int data) {
 	return;
 }
 
+void append(Node * *head, int data) {
+	Node * new_node = new Node();
+	Node * last = *head;
+	new_node->data = data;
+	new_node->next = NULL;
+
+	if (*head==NULL){  //list is empty
+		*head = new_node;
+		return;
+	}
+
+	while (last->next !=NULL){
+		last = last->next;
+	}
+
+	last->next = new_node;
+
+	return;
+
+
+}
+
+
+vodi deleteNode(Node ** head_ref, int x) {
+	Node *temp = *head_ref;
+	Node *prev = NULL;
+	// Delete First Node
+	if (temp != NULL && temp->data==x){
+		*head_ref = temp->next;
+		delete temp;
+		return;
+	}
+	else{
+		while (temp !=NULL && temp->data !=x){
+			prev = temp;
+			temp = temp->next;
+		}
+
+		if (temp==NULL){
+			return;
+		}
+
+		prev->next = temp->next;
+		delete temp;
+	}
+
+}
+
+//Method 1 : Iterative
+bool Search1(Node * head, int key) {
+	Node * current = head;
+	while (current!=NULL){
+		if (current->data ==key){
+			return true;
+		}
+		current = current->next;
+	}
+
+	return false;
+}
+
+//Method 2 :Recursive
+bool Search2(Node * head, int key) {
+	if (head==NULL){ //Node is empty
+		return false;
+	}
+	if (head->data==key){
+		return true;
+	}
+
+	return Search2(head->next, key);
+
+}
+
+//Method 1 : Iterativ
+int GetNth1(Node * head, int index) {
+	Node * current = head;
+	int count = 0;
+	while (current!=NULL){
+		if (count==index){
+			return (current->data);
+		}
+		count++;
+		current = current->next;
+	}
+	return -1;  // Found not
+}
+
+
+//Method 2 :Recursive
+int GetNth2(Node *head, int index) {
+	if (head ==NULL){
+		return -1;
+	}
+	if (index==0){
+		return head->data;
+	}
+	return GetNth2(head->next, index - 1);
+}
+
 
 
 int main() {
