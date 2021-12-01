@@ -53,7 +53,7 @@ void traverse (Node * head){
 		return ;
 	}
 	p = head;
-	cout<<"head: " << p ->data<<endl;
+	
 	do
 	{
 		cout<<p->data <<" ";
@@ -68,17 +68,21 @@ Node * exchangeNodes (Node * head){
 		head= head->next;
 		return head;
 	}
-
-
 	Node * p = head;
 	while (p ->next->next != head)
 	{
 		p = p->next;
 	}
 
+
 	p->next->next = head->next;
+	// (5) 6->1->2->3->*4->5	
+	//6->1->2->3->*4->5
+
 	head->next = p->next;
+	//'6->5
 	p->next = head;
+	//4*->6
 	head= head->next;
 	return head;
 }
