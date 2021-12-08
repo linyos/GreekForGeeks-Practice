@@ -34,6 +34,36 @@ void push (Node ** head_ref , int newdata){
 	(*head_ref) = new_node;
 }
 
+void deleteNode (Node ** head_ref , Node * del){
+
+	if (*head_ref== NULL || del==NULL)
+	{
+		return ;
+	}
+	// If node to be deleted is head node.
+	if (*head_ref==del)
+	{
+		*head_ref=del->next;
+	}
+
+	if (del->next != NULL)
+	{
+		del->next->prev = del->prev;
+	}
+
+
+
+
+	if (del->prev != NULL)
+	{
+		del->prev->next = del->next;
+	}
+	free(del);
+
+	return ;
+
+
+}
 
 void insertAfter(Node * pre_node , int new_data){
 	
@@ -139,6 +169,22 @@ int main(){
     cout << "Created DLL is: ";
     printList(head);
  
+		Node* head = NULL;
+	push (&head , 2);
+    push(&head, 4);
+    push(&head, 8);
+    push(&head, 10);
+ 
+
+    cout << "Original Linked list ";
+    printList(head);
+ 
+
+	deleteNode(&head , head);
+	deleteNode(&head , head->next);
+	deleteNode (&head , head->next);
+	cout << "\nModified Linked list ";
+	printList(head);
 
 	
 	system("pause");
