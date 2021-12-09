@@ -1,0 +1,43 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std ;
+
+#define N 3
+
+
+
+void scalarProductMat (int mat[][N] , int k){
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			mat[i][j] = mat[i][j]* k;
+		}
+	}
+
+
+}
+
+int main ()
+{
+	   int mat[N][N] = { { 1, 2, 3 },
+                      { 4, 5, 6 },
+                      { 7, 8, 9 } };
+    int k = 4;
+ 
+    scalarProductMat(mat, k);
+ 
+    // to display the resultant matrix
+    printf("Scalar Product Matrix is : \n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++)
+            printf("%d ", mat[i][j]);
+        printf("\n");
+    }
+
+	system("pause");
+	return 0 ;
+}
