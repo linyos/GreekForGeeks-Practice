@@ -58,6 +58,30 @@ void append(Node ** head_ref, int data) {
 
 }
 
+void deleteNode(Node ** head_ref, int key)
+{
+	Node* temp = *head_ref;
+	Node * prev = NULL;
+
+	if (temp != NULL && temp->data == key)
+	{
+		*head_ref = temp->next;
+		delete temp;
+		return;
+	}
+	else
+	{
+		while (temp != NULL && temp->data != key)
+		{
+			prev = temp;
+			temp = temp->next;
+		}
+		prev->next = temp->next;
+
+		delete temp;
+	}
+}
+
 
 void printList(Node * node) {
 	while (node != NULL)
