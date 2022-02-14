@@ -1,3 +1,11 @@
 commit 記錄索引的狀態
+<<<<<<< HEAD
 添加pull的說明
 Issue1 add text
+=======
+<<<<<<< HEAD
+添加pull的說明
+=======
+issue2 add
+>>>>>>> issue2
+>>>>>>> issue2
