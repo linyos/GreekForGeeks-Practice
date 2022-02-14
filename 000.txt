@@ -9,4 +9,8 @@ Issue1 add text
 issue2 add
 >>>>>>> issue2
 >>>>>>> issue2
+<<<<<<< HEAD
 0215: issue insert
+=======
+02/15 : 輸入資料
+>>>>>>> 1ce11a4b4e2280beb06f1270eecec8da420573cc
