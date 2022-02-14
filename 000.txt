@@ -9,3 +9,4 @@ Issue1 add text
 issue2 add
 >>>>>>> issue2
 >>>>>>> issue2
+02/15 : 輸入資料
