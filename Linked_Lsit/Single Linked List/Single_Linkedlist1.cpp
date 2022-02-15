@@ -83,6 +83,53 @@ void deleteNode(Node ** head_ref, int key)
 }
 
 
+
+
+void push(Node ** head_ref, int newdata) {
+	Node * node = new Node();
+	node->data = newdata;
+	node->next = (*head_ref);
+	(*head_ref) = node;
+}
+
+
+void deleteNodePos(Node ** head_ref, int pos) {
+	if (*head_ref == NULL)
+	{
+		return;
+	}
+	// Store head node
+	Node * temp = *head_ref;
+
+	if (pos == 0)
+	{
+		*head_ref = temp->next;
+		delete temp;
+		return;
+	}
+
+	for (int i = 0; temp != NULL && i < pos - 1; i++) {
+		temp = temp->next;
+	}
+
+	if (temp == NULL || temp->next == NULL)
+	{
+		return;
+	}
+
+	// Node temp->next is the node to be deleted
+	// Store pointer to the next of node to be deleted
+
+	Node * next = temp->next->next;
+
+	delete(temp->next);
+
+
+	temp->next = next;
+
+}
+
+
 void printList(Node * node) {
 	while (node != NULL)
 	{
@@ -117,6 +164,10 @@ int main() {
 	insertAfter(head->next, 8);
 
 	cout << "Created Linked list is: ";
+	printList(head);
+
+	deleteNodePos(&head, 1);
+	cout << "\nLinked List after Deletion at position 1: ";
 	printList(head);
 
 	system("pause");
