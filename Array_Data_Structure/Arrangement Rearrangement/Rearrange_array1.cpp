@@ -49,11 +49,48 @@ void  fixArray(int arr[] , int n) {
 	}
 
 }
+
+
+//Method2 
+void fixArray2(int arr[] , int n ){
+
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] != -1 && arr[i] != i)
+		{
+			int x = arr[i];
+			//Check if desired place is not vacate
+			while (arr[x] !=-1 &&  arr[x] !=x)
+			{
+				// Store the value from desired place
+				int y = arr[x];
+				//Store the x to its correct position
+				arr[x] = y;
+				//now y will become x, now search the place for x 
+				x=y;
+
+			}
+			 // place the x to its correct
+            // position
+			arr[x] =x;
+
+			// check if while loop hasn't set the correct value at arr[i]
+			if (arr[i] != i)
+			{
+				//put -1 at the vacated plae
+				arr[i]=-1
+			}
+		}
+
+	}
+}
+
+
 int main (){
 
 	int arr[] = { -1, -1, 6, 1, 9, 3, 2, -1, 4, -1 };
 	int n = sizeof(arr) / sizeof(arr[0]);
-	fixArray(arr, n);
+	fixArray2(arr, n);
 	system("pause");
 	return 0 ;
 }
