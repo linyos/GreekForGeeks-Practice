@@ -84,7 +84,36 @@ void fixArray2(int arr[] , int n ){
 
 	}
 }
+void fixArray3(int arr[] , int n ){
+  // a set
+  unordered_set<int> s;
+   
+  // Enter each element which is not -1 in set
+  for(int i=0; i<n; i++)
+  {
+    if(arr[i] != -1)
+      s.insert(arr[i]);
+  }
 
+
+  for (int i = 0; i < n; i++)
+  {
+	  if (s.find(i) != s.end())
+	  {
+		  arr[i]=i;
+	  }
+	  else
+	  {
+		  arr[i] = -1;
+	  }
+  }
+
+  cout << "Method3  : Array after Rearranging" << endl;
+    for(int i=0; i<n; i++)
+    cout << arr[i] << ' ';
+
+
+}
 
 int main (){
 
