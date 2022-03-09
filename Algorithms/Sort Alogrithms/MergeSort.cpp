@@ -19,22 +19,22 @@ void merge(int arr[], const int left, const int mid, const int right) {
 	
 	const int subArrayOne = mid - left + 1;
 	const int subArrayTwo = right - mid;
-
+	// Create temp arrays
 	int * leftArray = new int[subArrayOne];
 	int * rightArray = new int[subArrayTwo];
-
+	// Copy data to temp arrays  leftarray[] and rightarray[]
 	for (int i = 0; i < subArrayOne; i++)
-	{
 		leftArray[i] = arr[left + i];
-	}
 	for (int j = 0; j < subArrayTwo; j++)
-	{
 		rightArray[j] = arr[mid + 1 + j];
-	}
-
+	// Initial index of first sub-array
+	// Initial index of second sub-array
 	int indexofSubArrayOne = 0, indexofSubArrayTwo = 0;
+	// Initial index of merged array
 	int indexMergedArray = left;
 
+
+	// Merge the temp attay back into array[left...right]
 	while (indexofSubArrayOne < subArrayOne && indexofSubArrayTwo < subArrayTwo)
 	{
 		if (leftArray[indexofSubArrayOne] <= rightArray[indexofSubArrayTwo])
@@ -49,12 +49,13 @@ void merge(int arr[], const int left, const int mid, const int right) {
 		}
 		indexMergedArray++;
 	}
-
+	//Copy the remaining elements of left[], if there are any
 	while (indexofSubArrayOne < subArrayOne){
 		arr[indexMergedArray] = leftArray[indexofSubArrayOne];
 		indexofSubArrayOne++;
 		indexMergedArray++;
 	}
+	//Copy the remaining elements of right[] , if there are any.
 	while (indexofSubArrayTwo < subArrayTwo){
 		arr[indexMergedArray] = rightArray[indexofSubArrayTwo];
 		indexofSubArrayTwo++;
