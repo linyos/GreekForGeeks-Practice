@@ -50,6 +50,8 @@ void merge(int arr[], const int left, const int mid, const int right) {
 		indexMergedArray++;
 	}
 	//Copy the remaining elements of left[], if there are any
+	// 如果上一步合併之後leftArray 還有剩餘element還沒合併，
+	// 將leftarray 逐一合併array
 	while (indexofSubArrayOne < subArrayOne){
 		arr[indexMergedArray] = leftArray[indexofSubArrayOne];
 		indexofSubArrayOne++;
