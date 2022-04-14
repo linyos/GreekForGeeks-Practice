@@ -6,6 +6,12 @@ void Insertion_Sort(int *arr, int size) {
 	for (int i = 1; i < size; i++){
 		int key = arr[i]; //initial key 
 		int j = i - 1;   // check index[j]
+
+
+
+		// 大到小 (key > arr[j])
+
+		// 小到大
 		while (key< arr[j] && j >=0){  // iterative check 
 			arr[j + 1] = arr[j];
 			j--;  
