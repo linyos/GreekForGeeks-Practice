@@ -60,6 +60,7 @@ Node * addEnd(Node * last , int data)
 	temp->next= last->next;
 	last->next=temp;
 	last = temp;
+	return last;
 }
 
 
