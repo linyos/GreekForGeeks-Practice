@@ -63,21 +63,19 @@ void pairSum(Node * head, int x)
 
 void insert(Node ** head_ref , int data)\
 {
-	Node * temp = new Node;
-	temp->data = data;
-	temp->next = temp->prev = NULL;
 
-	if (!(*head_ref))
-	{
-		*head_ref = temp;
-	}
-	else
-	{
+		Node * temp = new Node;
+		temp->data = x;
+		temp->prev = NULL;
+
 		temp->next = *head_ref;
-		(*head_ref)->prev = temp;
-		*head_ref = temp;
-	}
 
+		if ((*head_ref) != NULL)
+		{
+			(*head_ref)->prev = temp;
+		}
+
+		*head_ref = temp;
 }
 
 
