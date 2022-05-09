@@ -117,8 +117,12 @@ void rotateMatrix180(vector<vector<int>>& data)
 	int row = data.size();
 	int col = data[0].size();
 
+
 	if (row % 2 != 0)
 	{
+		// If N is odd reverse the middle
+		// row in the matrix
+		 // 先轉中間列，中間列只需要reverse 一次
 		reverseRow(data, data.size()/2);
 	}
 	// Swap the value of matrix [i][j] with
