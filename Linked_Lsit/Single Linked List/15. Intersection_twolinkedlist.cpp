@@ -45,9 +45,53 @@ Node * sortedIntersect(Node * a, Node * b)
 	return (dummy.next);
 }
 
+// Method 2 Using Local References. 
+Node* sortedIntersect(Node *a  , Node * b )
+{
+	Node * result = NULL;
+	Node ** lastPtrRef = & result;
 
+	while (a!= NULL && b!= NULL)
+	{
+		if (a->data==b->data)
+		{
+			push (lastPtrRef , a->data);
+			lastPtrRef = &((*lastPtrRef)->next);
+			a= a->next;
+			b=b->next;
+		}
+		else if (a->data < b->data)
+		{
+			a=a->next;
+		}
+		else
+		{
+			b=b->next;
+		}
+	}
+	return result;
+}
 
-
+// Method 3 : Uisng Recursive solution
+Node * sortedIntersect( Node* a, Node* b)
+{
+	if (a==NULL || b==NULL)
+	{
+		return NULL;
+	}
+	if (a->data < b->data)
+	{
+		return  sortedIntersect(a->next , b);
+	}
+	if (a->data > b->data)
+	{
+		return  sortedIntersect(a , b->next);
+	}
+	Node * temp = new Node ;
+	temp->data =a->data;
+	temp->next= sortedIntersect(a->next , b->next);
+	return temp;
+}
 
 
 
@@ -60,6 +104,43 @@ void printList(Node * node)
 	}
 	cout << endl;
 }
+
+
+
+// Method (Using Revise Method 1 
+Node * sortedIntersect(Node * a, Node * b)
+{
+	Node * temp = new Node;
+	while (a != NULL && b != NULL)
+	{
+		if (a->data == b->data)
+		{
+			push(&temp, a->data); 
+			a = a->next;
+			b = b->next;
+		}
+		else if (a->data < b->data)
+		{
+			a = a->next;
+		}
+		else
+		{
+			b = b->next;
+		}
+	}
+	// print List
+	while (tmpe->next != NULL)
+	{
+		cout<<temp->data << " ";
+		temp = temp->next;
+	}
+	cout<<endl;
+
+
+	return temp;
+}
+
+
 
 
 int main() {
@@ -96,6 +177,10 @@ int main() {
 	return 0;
 }
 
+/*
+Linked list containing common items of a & b 
+2 4 6 
+*/
 
 
 
