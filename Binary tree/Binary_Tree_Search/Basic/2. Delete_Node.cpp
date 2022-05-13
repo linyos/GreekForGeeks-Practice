@@ -128,7 +128,7 @@ int main() {
 	cout << "Inorder traversal of the given tree \n";
 	inorder(root);
 
-
+	 cout << "\nDelete 20\n";
 	root = deleteNode(root, 20);
 	cout << "\nInorder traversal of the modified tree \n";
 	inorder(root);
