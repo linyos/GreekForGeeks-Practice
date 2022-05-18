@@ -50,10 +50,11 @@ void Graph::path_counter(int src , int dst , int & path_count , vector<bool> & v
 	visited[src] = true;
 	if (src==dst)
 	{
+		cout<<s <<endl;
 		path_count++;
 	}
 	else
-	{
+	{cout<< s << " -> ";
 		for (auto i = m_neig[src].begin() ; i!= m_neig[src].end() ; i ++ )
 		{
 			if (!visited[*i])
