@@ -75,6 +75,30 @@ int maxLen(int arr[] , int n )
 }
 
 
+int maxSubArrayLen(vector<int> arr)
+{
+	map<int ,int> hm ;
+	hm[0] = 0 ;
+	int length = -1;
+	int cumSum = 0 ;
+
+	for (int i = 0; i < arr.size(); i++)
+	{
+		cumSum = cumSum + arr[i];
+		if (hm.find(cumSum) != hm.end())
+		{
+			length = max(length , i + 1 - hm[cumSum]);
+		}
+		else
+		{
+			
+			hm[cumSum] = i+1;
+			cout << cumSum<<" "<< hm[cumSum] << " " ; 
+		}
+	}
+	return length;
+}
+
 
 
 int main ()
