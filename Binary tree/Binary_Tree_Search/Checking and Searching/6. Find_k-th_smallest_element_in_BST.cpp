@@ -11,94 +11,92 @@
 
 using namespace std;
 
-class  node
+class Node
 {
 public:
 	int data;
-	node * left, *right;
+	Node * left , *right;
 };
 
 
 
 
-node * newNode(int data) {
-	node * Node = new node();
-	Node->data = data;
-	Node->left = Node->right = NULL;
+
+Node * newNode (int data)
+{
+	Node * root= new Node;
+	root->data=data;
+	root->left= root->right = NULL;
+	return root;
+}
+
+Node  * insert(Node * root , int data)
+{
+	if (root==NULL) return  newNode(data);
+
+	if (data < root->data)
+	{
+		root->left = insert(root->left , data);
+	}
+	else if (data > root->data)
+	{
+		root->right = insert(root->right , data);
+	}
+	return root;
+}
+
+
+// Function to find k'th smallest element in BST 
+// Here count denote the number of nodes processed so far
+int kcount = 0 ;
+Node * kthSmallest(Node * root , int & k )
+{
+	if (root==NULL) return  NULL;
 	
-	return Node;
-}
+	Node * left = kthSmallest(root->left , k);
 
+	if (left != NULL) return left;
 
-node * insert(node * root, int data) {
-	if (root ==NULL)
-	{
-		return (newNode(data));
-	}
-	else
-	{
-		if (data <= root->data)
-		{
-			root->left = insert(root->left, data);
-		}
-		else
-		{
-			root->right = insert(root->right, data);
-		}
-		return root;
-	}
-}
+	kcount +=1;
 
-node * kthSmallest(node * root, int & k) {
-	if (root == NULL)
-	{
-		return NULL;
-	}
-
-	node * left = kthSmallest(root->left, k);
-	if (left != NULL)
-	{
-		return left;
-	}
-	k--;
-	if (k==0)
+	if (kcount==k)
 	{
 		return root;
 	}
-	return kthSmallest(root->right, k);
+	return kthSmallest(root->right , k);
 }
 
 
-void printkthSmallest(node * root, int k) {
-	int count = 0;
-	node * res = kthSmallest(root, k);
-	if (res ==NULL)
+// Function to print k'th smallest element in BST
+void printkthSmallest(Node * root , int k )
+{
+	if (root==NULL) return ;
+	Node * res = kthSmallest(root , k );
+	if (res==NULL)
 	{
-		cout << "There are less than k nodes in the BST";
+		cout<< "NO"<<endl;
 	}
 	else
 	{
-		cout << "K-th Smallest Element is " << res->data;
+		cout<<"Element is " << res->data <<endl;
 	}
-
 }
+
 
 
 int main()
 {
-	node * root = NULL;
+	Node * root= NULL;
 	int keys[] = { 20 ,8,22,4,12,10,14 };
 	for (int x : keys)
 	{
 		root = insert(root, x);
 	}
 
-	int k = 3;
+	int k = 4;
 	printkthSmallest(root, k);
 
 	
 	system("pause");
 	return 0;
 }
-
-
