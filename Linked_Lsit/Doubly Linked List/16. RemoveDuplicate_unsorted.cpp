@@ -115,6 +115,41 @@ void printList(Node * head){
 
 
 
+// Method 3
+// function to remove duplicates from
+// an unsorted doubly linked list
+void removeDuplicates(struct Node** head_ref)
+{
+	if ((*head_ref)==NULL)
+	{
+		return; 
+	}
+	 // unordered_set 'us' implemented as hash table
+	unordered_set<int> us;
+	Node *current = * head_ref  , *next;
+
+	while (current != NULL)
+	{
+		// if current data is seen before
+		if (us.find(current->data) != us.end())
+		{
+			next = current->next;
+			deleteNode(head_ref , current);
+			current= next;
+		}
+		else
+		{
+			us.insert(current->data);
+			current= current->next;
+		}
+	}
+
+
+
+}
+
+
+
 int main (){
 	Node * head = NULL;
 	 // Create the doubly linked list:

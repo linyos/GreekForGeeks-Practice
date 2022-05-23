@@ -118,7 +118,7 @@ int main (){
     deleteAllOccurOfX(&head, x);
   
     cout << "\nDoubly linked list after deletion of "
-         << x << ":n";
+         << x << ": ";
     printList(head);
 
 

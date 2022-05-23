@@ -11,63 +11,63 @@
 
 using namespace std;
 
-void addEdge(vector<int > adj[], int src, int dest)
+// function to add an edge from vertex source to vertex dest
+void addEdge (vector<int> adj[] , int src ,int dest)
 {
 	adj[src].push_back(dest);
 }
 
-
-void displayGraph(vector<int> adj[], int v)
+// function to print adjacency list of a graph
+void displayGraph(vector<int> adj[] , int v)
 {
 	for (int i = 0; i < v; i++)
 	{
-		cout << i << " --> ";
+		cout<< i <<" --> ";
 		for (int j = 0; j < adj[i].size(); j++)
 		{
-			cout << adj[i][j] << " ";
+			cout<< adj[i][j]<<" -> ";
 		}
-		cout << endl;
+		cout<<endl;
 	}
-
+	cout << endl;
 }
 
-void transposeGraph(vector<int> adj[], vector<int> transpose[], int v)
+
+// function to get Transpose of a graph taking adjacency
+// list of given graph and that of Transpose graph
+void transposeGraph(vector<int> adj[] , vector<int> transpose[] ,int v)
 {
 	for (int i = 0; i < v; i++)
 	{
 		for (int j = 0; j < adj[i].size(); j++)
 		{
-			addEdge(transpose, adj[i][j], i);
+			addEdge(transpose , adj[i][j] , i );
 		}
 	}
-
+	
 }
 
 
 int main() {
 
-	const int v = 5;
-	vector<int> adj[v];
+		int v = 5 ;
+	vector<int> adj[5];
 	addEdge(adj, 0, 1);
-	addEdge(adj, 0, 4);
-	addEdge(adj, 0, 3);
-	addEdge(adj, 2, 0);
-	addEdge(adj, 3, 2);
-	addEdge(adj, 4, 1);
-	addEdge(adj, 4, 3);
+    addEdge(adj, 0, 4);
+    addEdge(adj, 0, 3);
+    addEdge(adj, 2, 0);
+    addEdge(adj, 3, 2);
+    addEdge(adj, 4, 1);
+    addEdge(adj, 4, 3);
+  
+
+	displayGraph(adj , v);
+
+	vector<int> transpose[5];
+    transposeGraph(adj, transpose, v);
 
 
-
-	displayGraph(adj, v);
-
-	vector<int> transpose[v];
-
-
-
-	transposeGraph(adj, transpose, v);
-	cout << "Transpose: " << endl;
-	displayGraph(transpose, v);
-
+    displayGraph(transpose, v);
 
 	system("pause");
 	return 0;
