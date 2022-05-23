@@ -137,7 +137,7 @@ void MaxHeap::maxHeapify(int i)
 	}
 	if (largest != i)
 	{
-		swap(&harr[i], &harr[largest]);
+		Swap(&harr[i], &harr[largest]);
 		maxHeapify(largest);
 	}
 }
@@ -156,6 +156,8 @@ int  kthSmallest(int arr[], int n, int k)
 
 	return mh.getMax();
 }
+
+
 // Method 5 :quickSort
 int kthSmallest(int arr[], int l, int r, int k)
 {
