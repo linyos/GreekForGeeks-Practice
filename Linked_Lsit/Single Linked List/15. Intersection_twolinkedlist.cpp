@@ -87,8 +87,14 @@ Node * sortedIntersect( Node* a, Node* b)
 	{
 		return  sortedIntersect(a , b->next);
 	}
+
+	
+    // Below lines are executed only
+    // when a->data == b->data
+
 	Node * temp = new Node ;
 	temp->data =a->data;
+
 	temp->next= sortedIntersect(a->next , b->next);
 	return temp;
 }

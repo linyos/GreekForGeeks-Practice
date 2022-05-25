@@ -39,6 +39,7 @@ int getNthUglyNo(int n)
 	return  i;
 }
 
+// Method :  DP
 unsigned getNthUglyNo1(unsigned n)
 {
 	unsigned ugly[150];
