@@ -9,61 +9,57 @@ using namespace std;
 
 class Graph
 {
+private:
+	int V;
+	list <int> * adj;
+
 public:
 	Graph(int v);
-	void add_edge(int src , int dst);
-	int count_paths(int src , int dst ,int  v);
-
-private:
-	int m_vertices;
-	list<int> * m_neig;
-	void path_counter (int src , int dst , int & path_count , vector<bool> & visited);
+	void  add_edge(int src, int dst);
+	int count_paths(int src, int dst, int v);
+	void path_counter(int src, int dst, int & path_count, vector<bool> & visited);
 };
-
 
 Graph::Graph(int v)
 {
-	m_vertices = v;
-	m_neig = new list<int>[v];
+	this->V = v;
+	adj = new list<int>[v];
+}
+void Graph::add_edge(int v, int w)
+{
+	adj[v].push_back(w);
 }
 
-
-void Graph::add_edge(int src , int dst)
+int Graph::count_paths(int s, int d, int v)
 {
-	m_neig[src].push_back(dst);
-}
-
-
-int Graph::count_paths(int src , int dst , int v)
-{
-	int path_count= 0;
-	vector<bool> visited (v ,false);
-	path_counter(src , dst  , path_count , visited);
+	int path_count = 0;
+	vector<bool> visited(v, false);
+	path_counter(s, d, path_count, visited);
 	return path_count;
 }
 
 
 
-
-void Graph::path_counter(int src , int dst , int & path_count , vector<bool> & visited)
+void Graph::path_counter(int s, int d, int & path_count, vector < bool> & visited)
 {
-	visited[src] = true;
-	if (src==dst)
+	visited[s] = true;
+	if (s == d)
 	{
-		cout<<s <<endl;
+		cout << s << endl;
 		path_count++;
 	}
 	else
-	{cout<< s << " -> ";
-		for (auto i = m_neig[src].begin() ; i!= m_neig[src].end() ; i ++ )
+	{
+		cout << s << " --> ";
+		for (list<int>::iterator i = adj[s].begin(); i != adj[s].end(); i++)
 		{
 			if (!visited[*i])
 			{
-				path_counter( *i ,dst , path_count , visited);
+				path_counter(*i, d, path_count, visited);
 			}
 		}
 	}
-	visited[src]= false;
+	visited[s] = false;
 }
 
 
