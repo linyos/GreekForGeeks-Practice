@@ -9,72 +9,54 @@ class Node
 public:
 	int data;
 	Node * next;
-	
 };
 
-
-class LinkedList
+void push(Node ** head_ref, int data)
 {
-public:
-	Node * head;
-	LinkedList() 
+	Node * temp = new Node;
+	temp->data = data;
+	temp->next = *head_ref;
+	*head_ref = temp;
+}
+void printList(Node * head)
+{
+	while (head != NULL)
 	{
-		head=NULL;
+		cout << head->data << " ";
+		head = head->next;
 	}
-	void reverse()
+	cout << endl;
+}
+void reverse(Node ** head_ref)
+{
+	Node * current = *head_ref;
+	Node * next = NULL;
+	Node * prev = NULL;
+
+	while (current != NULL)
 	{
-		Node * current = head;
-		Node * prev = NULL;
-		Node * next = NULL;
-		while (current != NULL)
-		{
-			next= current->next;
-			current->next=prev;
-
-			prev=current;
-			current=next;
-		}
-		head = prev;
-	}
-
-
-
-	void pirntList()
-	{
-		Node * temp = head;
-		while (temp != NULL)
-		{
-			cout<<temp->data<<" ";
-			temp= temp->next;
-		}
-	}
-
-	void push(int data){
-		Node * node = new Node();
-		node->data=data;
-		node->next=head;
-		head= node;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
 
 	}
-};
-
-
-
+	*head_ref = prev;
+}
 
 int main() {
 
-	 LinkedList ll;
-    ll.push(20);
-    ll.push(4);
-    ll.push(15);
-    ll.push(85);
-  
-    cout << "Given linked list\n";
-    ll.pirntList();
-    ll.reverse();
-  
-    cout << "\nReversed Linked list \n";
-    ll. pirntList();
+	Node * head = NULL;
+	push(&head, 5);
+	push(&head, 4);
+	push(&head, 3);
+	push(&head, 2);
+	push(&head, 1);
+	printList(head);
+
+
+	reverse(&head);
+	printList(head);
 
 	system("pause");
 	return 0;

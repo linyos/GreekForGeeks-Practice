@@ -3,6 +3,7 @@
 using namespace std;
 
 
+
 class Node
 {
 public:
@@ -11,54 +12,52 @@ public:
 };
 
 
-void push (Node ** head_ref , int data){
-	Node * node = new Node();
-	node->data =data;
-	node->next= *head_ref;
-	(*head_ref) = node;
+
+void push(Node ** head_ref, int data)
+{
+	Node * temp = new Node;
+	temp->data = data;
+	temp->next = *head_ref;
+	*head_ref = temp;
 }
 
 
-
-
-
-
-void printList (Node *  node){
+void printList(Node *  node) {
 	Node * current = node;
 	while (current != NULL)
 	{
-		cout<<current->data<<" -> ";
-		current= current->next;
+		cout << current->data << "  ";
+		current = current->next;
 	}
-	cout<<endl;
+	cout << endl;
 }
 
 
-
 //Method  ( Using length of linked list)
-void printNthFromLast(Node * head , int n ){
-	int len = 0 , i ;
+
+void printNthFromLast(Node * head, int n)
+{
+	int len = 0, i;
 	Node * temp = head;
 
 	while (temp != NULL)
 	{
-		temp=temp->next;
+		temp = temp->next;
 		len++;
 	}
-	if (len < n)
-	{
-		return ;
-	}
+
+	if (len < n) return;
+
 	temp = head;
-	for (int i = 1; i < len-n+1; i++)
+
+	for (i = 1; i < len - n + 1; i++)
 	{
-	
 		temp = temp->next;
 	}
-	cout<<temp->data;
-	return ;
-
+	return;
 }
+
+
 
 
 
@@ -147,16 +146,18 @@ public:
 
 int main(){
 
-	Llist ll;
-	for (int i = 60; i >= 10 ; i-=10)
+	Node * head = NULL;
+	for (int i = 60; i >= 10; i -= 10)
 	{
-		ll.insertAtBegin(i);
+		push(&head, i);
 	}
 
-	ll.displaylist();
-	  for (int i = 1; i <= 7; i++)
-        ll.nthFromEnd(i);
- 
+	printList(head);
+	int n = 2;
+	printNthFromLast(head, n);
+
+
+
 
 	system("pause");
 	return 0 ;

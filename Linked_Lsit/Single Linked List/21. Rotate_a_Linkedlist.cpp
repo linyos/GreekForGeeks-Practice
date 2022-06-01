@@ -60,6 +60,35 @@ void rotate (Node ** head_ref , int k)
 }
 
 
+// This function rotates a linked list
+// counter-clockwise and updates the
+// head.
+void rotate(Node ** head_ref, int k)
+{
+	if (k == 0) return;
+
+	Node * current = *head_ref;
+
+	// Traverse till the end.
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	// circular linked list
+	current->next = *head_ref;
+	current = *head_ref;
+
+	// traverse the linked list to k-1 position which
+	// will be last element for rotated array.
+	for (int i = 0; i < k - 1; i++)
+	{
+		current = current->next;
+	}
+	// update the head_ref and last element pointer to NULL
+	*head_ref = current->next;
+	current->next = NULL;
+}
+
 
 void push (Node ** head_ref , int data)
 {
@@ -79,6 +108,15 @@ void printList (Node * node)
 	}
 	cout<<endl;
 }
+
+
+
+/*
+Given linked list
+10  20  30  40  50  60
+Rotated Linked list
+50  60  10  20  30  40
+*/
 
 int main() {
 
