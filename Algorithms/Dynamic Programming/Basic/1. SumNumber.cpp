@@ -49,7 +49,13 @@ int main()
 	//cout<<rec_opt(arr, n) << endl;
 
 
+
+
+
 	cout << dp_opt(arr, n) << endl;
+
+
+
 	system("pause");
 	return 0;
 }
