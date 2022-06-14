@@ -30,7 +30,8 @@ void printList (Node * node)
 	cout<<endl;
 }
 
-
+// Function to skip M nodes and then
+// delete N nodes of the linked list.
 void skipMdeleteN(Node * head  , int M , int N)
 {
 	Node * current = head ,* t;
@@ -46,11 +47,10 @@ void skipMdeleteN(Node * head  , int M , int N)
 		}
 
 		cout<<endl;
-
+		 // If we reached end of list, then return
 		if (current == NULL)
-		{
 			return ;
-		}
+		
 
 		// Start from next node and delete N Node
 		 t = current->next;
@@ -60,7 +60,9 @@ void skipMdeleteN(Node * head  , int M , int N)
 			 t =t->next;
 			 free(temp);
 		 }
+		  // Link the previous list with remaining nodes
 		 current->next = t;
+		 // Set current pointer for next iteration
 		 current= t ;
 	}
 
