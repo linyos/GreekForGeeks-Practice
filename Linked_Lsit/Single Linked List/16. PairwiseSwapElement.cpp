@@ -64,6 +64,8 @@ int main() {
 
 	cout << "\nLinked list "
 		<< "after calling pairWiseSwap()\n";
+
+	//2 1 4 3 5
 	printList(start);
 	system("pause");
 	return 0;

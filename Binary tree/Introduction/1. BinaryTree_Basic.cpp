@@ -62,11 +62,7 @@ Node * InsertNode(Node * root, int data)
 			temp->right =CreateNode(data);
 			return root;
 		}
-	
 	}
-	
-
-
 }
 
 
@@ -79,13 +75,12 @@ void inorder(Node * root) {
 	inorder(root->left);
 	cout << root->data << " ";
 	inorder(root->right);
-
-
 }
 
 
 int main() {
-		Node* root = CreateNode(10);
+	
+	Node* root = CreateNode(10);
     root->left = CreateNode(11);
     root->left->left = CreateNode(7);
     root->right = CreateNode(9);
