@@ -71,6 +71,8 @@ void Graph::BFS(int s)
 		visited[i] = false;
 	}
 	queue<int> q;
+
+
 	visited[s] = true;
 	q.push(s);
 	while (!q.empty())
