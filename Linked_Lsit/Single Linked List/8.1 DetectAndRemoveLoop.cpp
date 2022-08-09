@@ -64,6 +64,10 @@ void removeLoop(Node * loop_node, Node * head)
 	{
 		ptr2 = ptr2->next;
 	}
+
+	// ptr2 : 4 
+	//cout << "ptr2 " << ptr2->data << endl; 
+
 	/*  Move both pointers at the same pace,
 	 they will meet at loop starting node */
 	while ( ptr2 != ptr1)
@@ -71,7 +75,8 @@ void removeLoop(Node * loop_node, Node * head)
 		ptr1 = ptr1->next; 
 		ptr2 = ptr2->next;
 	}
-
+	// ptr2 : 4 
+	// ptr1: 4
 	// Get pointer to the last node
 	while (ptr2->next != ptr1)
 	{

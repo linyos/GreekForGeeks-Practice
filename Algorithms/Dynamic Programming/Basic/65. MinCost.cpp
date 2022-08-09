@@ -8,7 +8,7 @@
 using namespace std;
 
 # define R 3
-#define C 3
+# define C 3
 
 
 
